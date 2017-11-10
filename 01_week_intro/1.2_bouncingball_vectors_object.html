@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script src="../libs/p5.min.js"></script>
+		<script type="text/javascript">
+			
+			var circ;
+
+			function setup() {
+				createCanvas(500, 500);
+
+				circ = new Ball();
+			}
+
+			function draw() {
+
+				circ.update();
+				circ.edges();
+				circ.display();
+
+			}
+
+			function Ball() {
+
+				this.acceleration = createVector(0, 0);
+				//this.velocity = createVector(0,0);
+				this.velocity = createVector(2.5, 5);
+				this.position = createVector(width / 2, height / 2);
+
+				this.update = function() {
+					//console.log('this.move called');
+					this.position.add(this.velocity);
+					if ((this.position.x > width) || (this.position.x < 0)) {
+						this.velocity.x = this.velocity.x * -1;
+					}
+					if ((this.position.y > height) || (this.position.y < 0)) {
+						this.velocity.y = this.velocity.y * -1;
+					}
+				}
+
+				this.edges = function() {
+
+				}
+
+				this.display = function() {
+					stroke(0);
+					background(217);
+					ellipse(this.position.x, this.position.y, 30);
+				}
+			}
+
+		</script>
+	</body>
+</html>
