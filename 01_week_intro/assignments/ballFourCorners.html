@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
+		<script src="../../libs/p5.min.js"></script>
+		<script type="text/javascript">
+			
+			// a force is a vector 
+			// that causes an object with mass to accelerate 
+
+			// vector - an entity with magnitude and direction
+			// accleration - change in velocity over time (per frame)
+
+			var x;
+			var y;
+			var timer = 100;
+			var nextTime = 0;
+
+			function setup() {
+				createCanvas(600,600);
+				noStroke();
+				fill(0);
+
+				x = width / 2;
+				y = height / 2;
+			}
+
+			function draw() {
+				background(255);
+
+
+				// millis() is how long the program has been running
+				if (millis() < 4000) {
+					console.log('timer running')
+					console.log(millis());
+					//nextTime = millis()// + timer;
+
+					if (x < width - 50) {
+						x = x + 2;
+					}
+				}
+
+				if ((millis() > 4000) && (millis() < 8000)) {
+					if (y < height - 50) {
+						y = y + 2;
+					}
+				}
+
+				if ((millis() > 8000) && (millis() < 12000)) {
+					console.log('mmmmmm')
+					if (x > 50) {
+						x = x - 4;
+					}
+				}
+
+				if ((millis() > 12000) && (millis() < 16000)) {
+					console.log('mmmmmm')
+					if (y > 50) {
+						y = y - 4;
+					}
+				}
+
+				
+				ellipse(x , y, 40);
+
+			}
+
+		</script>
+	</body>
+</html>
