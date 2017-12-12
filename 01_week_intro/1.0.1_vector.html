@@ -14,11 +14,19 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
 		<script type="text/javascript">
 			
+			var v1;
+
 			function setup() {
 				createCanvas(600,600);
+				v1 = createVector(40,50);
 			}
 
 			function draw() {
+				background(255);
+
+				ellipse(v1.x, v1.y, 40);
+
+				v1.x += 1;
 			}
 
 		</script>
