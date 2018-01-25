@@ -31,17 +31,22 @@
 			}
 
 			function Ellip() {
-				this.vector = createVector(50, random(height));
+				//this.vector = createVector(50, random(height));
 				this.diameter = random(15, 40);
 				this.speed = 1;
 
+				//this.acceleration = createVector(0,0);
+				this.velocity = createVector(1.5, 5);
+				this.position = createVector(width/2, height/2);
+
 				this.move = function() {
-					this.vector.x += this.speed;
+					this.position.x += this.velocity.x;
 				}
 
 				this.display = function() {
-					ellipse(this.vector.x, this.vector.y, this.diameter);
+					ellipse(this.position.x, this.position.y, this.diameter);
 				}
+
 
 			}
 

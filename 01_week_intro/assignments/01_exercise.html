@@ -14,35 +14,16 @@
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script> -->
 		<script src="../libs/p5.min.js"></script>
 		<script type="text/javascript">
-			
-			var ball;
 
+			/*
+			Create a random walker with dynamic probabilities. For example, can you give it a 50% chance of moving in the direction of the mouse?
+			*/
+			
 			function setup() {
 				createCanvas(600,600);
-
-				ball = new Ellip();
 			}
 
 			function draw() {
-				background(255);
-
-				ball.move();
-				ball.display();
-			}
-
-			function Ellip() {
-				this.vector = createVector(50, random(height));
-				this.diameter = random(15, 40);
-				this.speed = 1;
-
-				this.move = function() {
-					this.vector.x += this.speed;
-				}
-
-				this.display = function() {
-					ellipse(this.vector.x, this.vector.y, this.diameter);
-				}
-
 			}
 
 		</script>

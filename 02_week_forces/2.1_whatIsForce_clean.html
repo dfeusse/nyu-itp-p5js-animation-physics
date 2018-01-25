@@ -23,13 +23,6 @@
 
 			var circ;
 
-			/*
-			var x = 100,
-				y = 100,
-				xspeed = 1,
-				yspeed = 1.5;
-			*/
-
 			function setup() {
 				createCanvas(300,300);
 				background(255);
@@ -38,59 +31,31 @@
 			}
 
 			function draw() {
-				background(255);
-				/*
-				x += xspeed;
-				y += yspeed;
+				background(200);
 
-				if ((x > width) || (x < 0)) {
-					xspeed *= -1;
-				}
-				if ((y > height) || (y < 0)) {
-					yspeed *= -1;
-				}
-
-				ellipse(x, y, 16, 16);
-				*/
 				circ.edges();
 				circ.move();
 				circ.display();
 			}
 
 			function CircleWithHeadInTheClouds() {
-				//this.x = 100;
-				//this.y = 100;
-				this.position = createVector(100, 100);
-
 				this.diameter = random(20,40);
-				//this.xspeed = 1;
-				//this.yspeed = 1.5;
-				this.speed = createVector(1, 1.5);
-				//this.velocity = createVector(0, 0); same as speed
-				//this.accleration = createVector(0,0); 
+				this.position = createVector(100, 100);
+				this.velocity = createVector(1, 1.5); //same as speed
+				this.accleration = createVector(0,0); 
 
 				this.edges = function() {
 					if ((this.position.x > width) || (this.position.x < 0)) {
-						this.speed.x *= -1;
+						this.velocity.x *= -1;
 					}
 					if ((this.position.y > height) || (this.position.y < 0)) {
-						this.speed.y *= -1;
+						this.velocity.y *= -1;
 					}
 				}
 
 				this.move = function() {
-					//this.position.x += this.speed.x;
-					//this.position.y += this.speed.y;
-
-					//this.speed.setMag(0.1);
-
-					//this.accleration.x += this.speed.x;
-					//this.accleration.y += this.speed.y;
-
-					//this.velocity.add(this.accleration);
-					//this.position.add(this.velocity);
-					this.position.add(this.speed);
-					//this.velocity.limit(1);
+					this.velocity.add(this.accleration);
+					this.position.add(this.velocity); // same as speed
 				}
 
 				this.display = function() {

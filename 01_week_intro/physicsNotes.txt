@@ -1,0 +1,27 @@
+if an object has two vectors (where we started before introducing acceleration):
+
+location
+velocity
+
+then:
+location - describes where it is (starting point)
+velocity - describes change in location over time (in update function, add velocity to location, then draw object a location)
+
+i.e. location changes over time by velocity
+location.add(velocity)
+
+BUT
+
+if an object has three vectors (ideal)
+(from this moment on, we're going to say we're not going to mess with velocity or location)
+buttt are going to add a new vector
+
+location
+velocity
+acceleration
+
+- velocity will now change over time by acceleration
+- acceleration can be changing not just magnitude (speeding up or slowing down) but also direction
+- so acceleration changes velocity
+
+NOW we're just changing acceleration, that adjusts velocity which adjusts location
