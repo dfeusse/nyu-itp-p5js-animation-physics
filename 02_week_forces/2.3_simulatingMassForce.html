@@ -21,6 +21,10 @@
 			// vector - an entity with magnitude and direction
 			// accleration - change in velocity over time (per frame)
 
+			// force = mass * acceleration
+			// thus
+			// accel = force / mass
+
 			var circ;
 
 			function setup() {
@@ -33,18 +37,41 @@
 			function draw() {
 				background(200);
 
+				// ---- HERE APPLY FORCE, to acceleration
+
+				// need to scale gravity based on mass
+				var gravity = createVector(0.1, 0);
+				gravity.mult(this.mass)
+				circ.applyForce(gravity);
+
+				var wind = createVector(0, 0.2);
+				circ.applyForce(wind);
+
+				// --------------------------------------
+
 				circ.edges();
 				circ.move();
 				circ.display();
 			}
 
 			function CircleWithHeadInTheClouds() {
-				this.diameter = random(20,40);
+				//this.diameter = random(20,40);
 				this.position = createVector(100, 100);
-				this.velocity = createVector(1, 1.5); //same as speed
+				//this.velocity = createVector(1, 1.5); //same as speed
+				this.velocity = createVector(0, 0); //same as speed
 				this.accleration = createVector(0,0); // the rate of change of velocity
 				//  important to realize that our acceleration values (measured in pixels) accumulate over time in the velocity
 				// why use limit()
+				this.mass = random(1,4);
+				this.diameter = this.mass*17;
+
+				// Newton's 2nd Law (the beginning)
+				this.applyForce = function(force) {
+					//this.accleration = force;
+					var f = p5.Vector.div(force, this.mass)
+					//this.accleration.add(force);
+					this.accleration.add(f);
+				}
 
 				this.edges = function() {
 					if ((this.position.x > width) || (this.position.x < 0)) {
@@ -58,6 +85,11 @@
 				this.move = function() {
 					this.velocity.add(this.accleration);
 					this.position.add(this.velocity); // same as speed
+
+					// need to wipte out acceleration so each time, it starts with zero
+					// don't want all to compound and make it go crazy off the screen
+					// want it to be smooth
+					this.accleration.mult(0);
 				}
 
 				this.display = function() {

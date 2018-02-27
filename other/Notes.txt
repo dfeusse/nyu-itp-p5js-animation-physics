@@ -1,0 +1,78 @@
+CH 1
+location, velocity, acceleration
+
+Motion 101
+	An object on screen has:
+	a location - (where it is at any given moment) 
+	& a velocity - (instructions for how it should move from one moment to the next). 
+
+	Velocity is added to location
+
+	- add velocity to location
+	- draw object at location
+
+	location.add(velocity)
+	ellipse(location.x, location.y)
+
+- For more interesting motion (motion that speeds up, slows down), can add Acceleration
+
+Acceleration - rate of change of velocity (think change of velocity)
+
+(also crucial to remember, acceleration changes velocity in magnitude AND direction. it steers an object too)
+
+- also think that definion of velocity is rate of change of location
+
+So:
+- velocity changes the location
+- acceleration changes / alters the velocity
+	i.e.: position -> changed by velocity -> changed by acceleration
+	
+	velocity.add(acceleration);
+	location.add(velocity);
+
+	basically if acceleration is constant, it = velocity
+	so only need to change acceleration, and can be constant or changing
+
+*It’s important to realize that our acceleration values (measured in pixels) accumulate over time in the velocity, about thirty times per second depending on our sketch’s frame rate. 
+- If want constant, can use .limit(value) or restart each draw loop I think by maybe mult by zero or something like that
+
+ALSO, acceleration affects direction
+	Acceleration does not merely refer to the speeding up or slowing down of a moving object, but rather any change in velocity in either magnitude or direction. 
+	Acceleration is used to steer an object
+
+For Acceleration, there is:
+	magnitude
+	& direction
+
+Once have the object, and where it's supposed to go, set the direction (using sub)
+But now, if just used that, object would just instantly jump from it's current location to target location, want it to ease there, not teleport
+SOOOO need to normalize the direction to one, and then can multiply it by anything for magnitude of the acceleration
+
+To summarize acceleration towards a location, we take the following steps:
+- Calculate a vector that points from the object to the target location (mouse)
+- Normalize that vector (reducing its length to 1)
+- Scale that vector to an appropriate value (by multiplying it by some value)
+- Assign that vector to acceleration
+
+However, one thing missing here is that the strength of gravity (magnitude of acceleration) is inversely proportional to distance. This means that the closer the object is to the mouse, the faster it accelerates. Now this isn't shown
+
+So, need forces so shape slows down when approaching target instead of contant speed
+and I think to land on the target instead of overshoot it, and keep bouncing around
+
+
+-------------------------
+CHAPTER 2 - FORCES
+-------------------------
+
+force = mass * acceleration
+
+if mass = 1
+force = acceleration
+
+since acceleration controls not just speeding up / slowing down, but also to steer an object
+for now can control everything
+(and know can apply various forces for different affects. one force can speed all up, another steer, etc)
+
+But, if do multiple forces, have to make sure acceleration doesnt equal just the last force, because:
+
+acceleration = to the sum of all forces divided by mass

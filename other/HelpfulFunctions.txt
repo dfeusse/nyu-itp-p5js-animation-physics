@@ -1,0 +1,8 @@
+Helpful Functions
+
+.limit(value) - use when need to limit the acceleration, or anything, of object
+	Ex. velocity.add(acceleration);
+    velocity.limit(topspeed);
+
+PVector.random2D(); - creates a random vector between 0 and 1
+	Because it's normalized, can scale by acceleration.mult(0.5), acceleration.mult(random(2)), etc
