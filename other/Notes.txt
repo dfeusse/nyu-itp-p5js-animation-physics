@@ -76,3 +76,43 @@ for now can control everything
 But, if do multiple forces, have to make sure acceleration doesnt equal just the last force, because:
 
 acceleration = to the sum of all forces divided by mass
+this = force accumulation, just have to add all the forces up
+so
+NOT: acceleration = force
+IS: acceleration.add(force)
+
+ONE more piece not to forget. Since adding forces to acceleration in draw, it adds itself onto the previous frame. why before had to use limit(), to cap this off. We want though acceleration to have no memory, not to continuously add and add (different than say location, where need to know where it previously was and build on it)
+Easiest way is to just multiply by 0: acceleration.mult(0);
+
+Now....add Mass
+
+complication of Mass: not a vector, just a number. 
+
+since this is being added (or equals) acceleration
+force / mass (= acceleration)
+then add force to acceleration
+
+Importantly: need to make a copy first though, because when change an object through a function, tht object changes
+
+So, a recap.....
+
+- a force is a vector
+- apply a force to an object by.....: divide it by mass and add it to acceleration (sometimes mass is 1 if constant. in my 2017 year in review vis, will have different masses because size will be different)
+
+-------------------------
+CHAPTER 2 - OSCILLATION
+-------------------------
+
+In ch 1 and 2, used vectors to represent location, velocity, acceleration
+driven by forces
+
+PI = 180 degrees
+TWO_PI = 360 degrees
+
+Remember motion:
+location = location * velocity
+velocity = velocity * acceleration
+
+Angular Motion is the same:
+angle = angle + angular velocity
+angular velocity = angular velocity + angular acceleration
