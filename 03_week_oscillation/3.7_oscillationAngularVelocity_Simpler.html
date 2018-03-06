@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script src="../libs/p5.min.js"></script>
+		<script type="text/javascript">
+			
+			var circ;
+
+			function setup() {
+				createCanvas(640, 400);
+
+				circ = new Ball();
+			}
+
+			function draw() {
+
+				circ.update();
+				circ.display();
+
+			}
+
+			function Ball() {
+
+				// how many draw() framecounts the cycle lasts
+				//this.period = 120;
+				this.angle = 0;
+				this.aVelocity = 0.05;
+
+				// distance from the center of motion to either extreme
+				// so range of motion / 2
+				//this.amplitude = 100;
+				this.amplitude = 100;
+
+				this.update = function() {
+					//this.x = this.amplitude * cos(TWO_PI * frameCount / this.period);
+					//Now rewrite it a slightly different way:
+					//this.x = amplitude * cos( some value that increments slowly );
+					this.x = this.amplitude * cos(this.angle);
+					this.angle += this.aVelocity;
+					// angle is our “some value that increments slowly.”
+					// same concept as period
+					//the number of times it takes to add up the angular velocity to get to TWO_PI is the period or: period = TWO_PI / angular velocity
+				}
+
+				this.display = function() {
+					background(255);
+					stroke(0);
+					fill(175);
+					translate(width/2, height/2);
+					line(0,0,this.x,0);
+					ellipse(this.x,0,20);
+				}
+			}
+
+		</script>
+	</body>
+</html>

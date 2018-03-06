@@ -116,3 +116,25 @@ velocity = velocity * acceleration
 Angular Motion is the same:
 angle = angle + angular velocity
 angular velocity = angular velocity + angular acceleration
+
+oscillation = waves
+
+amplitude - the distance from the center (middle of wave) to either extreme.
+	i.e. amplitude is half the total height of the wave. if it's 200 pixels from one end to other, amplitude is 100
+period - the amount of time it takes for one complete cycle of motion
+
+cosine oscillates between -1 and 1, so we multiply that by amplitude to get the height of each motion
+	if multiply by 100, then 1 * 100 = 100, -1 * 100 = -100, range of motion is -100 to 100
+
+Two formulas for the wave:
+
+x or y = amplitude * cos(TWO_PI * frameCount / period);
+
+x or y = amplitude * cos(some value that increments slowly);
+and
+angle = 0;
+aVelocity = 0.05;
+then in draw(), we can simply say:
+angle += aVelocity;
+angle is our “some value that increments slowly
+
