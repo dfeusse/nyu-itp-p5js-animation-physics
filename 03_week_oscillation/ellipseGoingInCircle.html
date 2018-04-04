@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>thunder</title> 
+		
+		<!-- Import CSS Here -->
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script src="../libs/p5.min.js"></script>
+		<script type="text/javascript">
+			
+			var circ;
+
+function setup() {
+  createCanvas(400, 400);
+  circ = new Obj();
+}
+
+function draw() {
+  background(255);
+  circ.move();
+  circ.display();
+}
+
+function Obj() {
+  this.x = 0;
+  this.y = 0;
+  
+  this.amplitude = 100;
+  this.angle = 0;
+  this.angleVelocity = .04;
+  
+  this.move = function() {
+    this.x = this.amplitude * cos(this.angle);
+    this.y = this.amplitude * sin(this.angle);
+    this.angle += this.angleVelocity;
+  }
+  
+  this.display = function() {
+    push();
+    translate(width/2, height/2);
+    ellipse(this.x, this.y, 30);
+    pop();
+  }
+}
+
+		</script>
+	</body>
+</html>
